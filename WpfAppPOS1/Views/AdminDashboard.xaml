@@ -1,0 +1,47 @@
+﻿<Window x:Class="WpfAppPOS1.Views.AdminDashboard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppPOS1.Views"
+        xmlns:l1="clr-namespace:WpfAppPOS1.ViewModels"
+        mc:Ignorable="d"
+        Title="AdminDashboard" Height="560" Width="1219" Background="#FEE2E2">
+    <Window.DataContext>
+        <l1:AdminDashboardVM/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="221"/>
+            <ColumnDefinition />
+            <ColumnDefinition Width="280"/>
+        </Grid.ColumnDefinitions>
+        <Border Padding="10" Grid.Column="0" 
+             Background="#ffffff" >
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                <StackPanel VerticalAlignment="Top">
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Image Source="\Img\Screenshot_2023-07-15_163020-removebg-preview.png" Height="80" Width="80" Margin="0 0 0 0"/>
+                        <TextBlock Text="Admin Dashboard" FontSize="30" FontWeight="ExtraBlack"  Foreground="#EC4899" TextWrapping="WrapWithOverflow" TextAlignment="Center"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel VerticalAlignment="Center" Grid.ColumnSpan="1"  Margin="0 40" >
+                    <Button Content="Manage Staffs" Margin="2 10"
+                     Height="40" Width="162" Command="{Binding OpenManageStaffCommand}" Style="{StaticResource MyButton}"/>
+                    <Button Content="Manage Products" Margin="2 10"
+                     Height="40" Width="162" Command="{Binding OpenManageProductCommand}" Style="{StaticResource MyButton}"/>
+                    <Button Content="Manage Stocks" Margin="2 10"
+                     Height="40" Width="162" Command="{Binding OpenManageStockCommand}" Style="{StaticResource MyButton}"/>
+                </StackPanel>
+                <StackPanel VerticalAlignment="Bottom">
+                    <Button Width="60" Margin="5 20 0 0" Content="Logout"
+                         Command="{Binding LogoutCommand}" Style="{StaticResource LogoutButtonStyle}" Height="27"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <ContentControl x:Name="Pages"
+                                Content="{Binding CurrentView}" Grid.Column="1" Grid.ColumnSpan="2"/>
+
+    </Grid>
+</Window>
